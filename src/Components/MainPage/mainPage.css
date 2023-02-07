@@ -1,0 +1,42 @@
+.main-page {
+    text-align: center;
+    width: 350px;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family:"Pattaya" ;
+  }
+  .hero {
+    width: 100px;
+    height: 100px;
+  }
+  .middle-container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  @media screen and (max-width: 950px) {
+    .middle-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .main-page{
+        text-align: center;
+        width: 250px;
+        height: 100%;
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family:"Pattaya" ;
+    }
+}
+  
+
+  
