@@ -13,6 +13,7 @@ const Timer = () => {
         secondsA:0,
         secondsB:0
     })
+    const [isReset, setIsReset] = useState(false)
     const gInterval: { current: NodeJS.Timeout | null } = useRef(null);
     const cookieRef = useRef(new Cookies())
     const displayNewTime = ()=>{
@@ -48,12 +49,10 @@ const Timer = () => {
         if(time.minutes== 5 && time.secondsA ==0 && time.secondsB == 0){
             clear(gInterval.current)
             startInterval()
-            console.log(time)
         }
        
    },[time])
-   const saveChanges = (e:any) =>{
-        console.log('from save',time)
+   const saveChanges = () =>{
         cookieRef.current.set('minutes',time.minutes)
         cookieRef.current.set('secondsA',time.secondsA)
         cookieRef.current.set('secondsB',time.secondsB)
@@ -65,7 +64,8 @@ const Timer = () => {
         time.minutes = 5
         time.secondsA=0
         time.secondsB = 0
-        setTime({...time})  
+        setTime({...time})
+        setIsReset(!isReset)  
     }
     const startInterval = () =>{
         const id = setInterval(()=>{
