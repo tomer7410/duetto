@@ -38,13 +38,22 @@ const Timer = () => {
                 })
             }
         const id = startInterval()
-        window.addEventListener("beforeunload", saveChanges);
+        window.addEventListener("click", saveChanges);
         return () => {
             clear(id);
                 window.removeEventListener("beforeunload", saveChanges);
         }
    },[])
+   useEffect(()=>{
+        if(time.minutes== 5 && time.secondsA ==0 && time.secondsB == 0){
+            clear(gInterval.current)
+            startInterval()
+            console.log(time)
+        }
+       
+   },[time])
    const saveChanges = (e:any) =>{
+        console.log('from save',time)
         cookieRef.current.set('minutes',time.minutes)
         cookieRef.current.set('secondsA',time.secondsA)
         cookieRef.current.set('secondsB',time.secondsB)
@@ -52,13 +61,11 @@ const Timer = () => {
    const clear =(id:any)=>{
         clearInterval(id)
    }
-   const resetTimer = () =>{
-        clear(gInterval.current)
+   const resetTimer = () =>{ 
         time.minutes = 5
         time.secondsA=0
         time.secondsB = 0
-        // setTime({...time})
-        startInterval()
+        setTime({...time})  
     }
     const startInterval = () =>{
         const id = setInterval(()=>{

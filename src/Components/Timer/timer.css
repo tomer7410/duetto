@@ -33,7 +33,9 @@
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    background-color: white;
+    background-color: rgb(166, 159, 213);   
+    color:white;
+    filter: brightness(80%);
 }
 .hours{width: 20%;}
 .minutes{width: 24%;}
