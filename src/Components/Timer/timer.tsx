@@ -38,7 +38,7 @@ const Timer = () => {
                 })
             }
         const id = startInterval()
-        window.addEventListener("click", saveChanges);
+        window.addEventListener("beforeunload", saveChanges);
         return () => {
             clear(id);
                 window.removeEventListener("beforeunload", saveChanges);
