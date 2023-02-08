@@ -60,6 +60,8 @@
     transition: filter 0.250s;
     border-radius: 3px;
     width: inherit;
+    color: white;
+
 
 }
 .clock-container {

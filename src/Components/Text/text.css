@@ -3,7 +3,7 @@
     flex-direction: column;
     text-align: left;
     overflow-wrap: break-word;
-    width:210px;
+    width:250px;
     justify-content:center;
     
 
@@ -17,6 +17,8 @@
 .secondary-text{
     font-size: 18px;
     color: white;
+    width: 250px;
+    height: 90px;
 }
 @media screen and (max-width: 950px) {
     .text-container {
@@ -24,7 +26,7 @@
         flex-direction: column;
         text-align: center;
         overflow-wrap: break-word;
-        width:210px;
+        width:250px;
         justify-content:center;
         
     

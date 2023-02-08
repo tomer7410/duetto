@@ -16,7 +16,6 @@ const Timer = () => {
     const gInterval: { current: NodeJS.Timeout | null } = useRef(null);
     const cookieRef = useRef(new Cookies())
     const displayNewTime = ()=>{
-        console.log("in display")
         if(--time.secondsB == -1){
             
             if(--time.secondsA==-1){
@@ -49,21 +48,27 @@ const Timer = () => {
         cookieRef.current.set('minutes',time.minutes)
         cookieRef.current.set('secondsA',time.secondsA)
         cookieRef.current.set('secondsB',time.secondsB)
-        console.log('before load')
    }
    const clear =(id:any)=>{
         clearInterval(id)
    }
    const resetTimer = () =>{
+    
+        // time.minutes = 5
+        // time.secondsA=0
+        // time.secondsB = 0
+        //  console.log('in reset',time)
+        // setTime({minutes:5,secondsA:0,secondsB:0})
         clear(gInterval.current)
+        startInterval()
+           
+    }
+    const startInterval = () =>{
         time.minutes = 5
         time.secondsA=0
         time.secondsB = 0
-        setTime({...time})
-        startInterval()
-    }
-    const startInterval = () =>{
         const id = setInterval(()=>{
+        // setTime({minutes:5,secondsA:0,secondsB:0})
             const newTime = displayNewTime()
             if(newTime.minutes == 0 && newTime.secondsA == 0 && newTime.secondsB == 0 )
                 clear(id)
