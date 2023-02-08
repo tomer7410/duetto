@@ -20,7 +20,7 @@ const Timer = () => {
             
             if(--time.secondsA==-1){
                 time.secondsA = 5
-                time.minutes --;
+                time.minutes = time.minutes-1
             }
             time.secondsB = 9
         }
@@ -30,9 +30,9 @@ const Timer = () => {
         if(cookieRef.current.get("minutes") && 
             cookieRef.current.get("secondsA") && 
             cookieRef.current.get("secondsB")){
-                time.minutes = cookieRef.current.get("minutes")
-                time.secondsA = cookieRef.current.get("secondsA")
-                time.secondsB = cookieRef.current.get('secondsB')
+                time.minutes = parseInt(cookieRef.current.get("minutes"))
+                time.secondsA = parseInt(cookieRef.current.get("secondsA"))
+                time.secondsB = parseInt(cookieRef.current.get('secondsB'))
                 setTime({
                    ...time
                 })
@@ -41,10 +41,10 @@ const Timer = () => {
         window.addEventListener("beforeunload", saveChanges);
         return () => {
             clear(id);
-            window.removeEventListener("beforeunload", saveChanges);
+                window.removeEventListener("beforeunload", saveChanges);
         }
    },[])
-   const saveChanges = () =>{
+   const saveChanges = (e:any) =>{
         cookieRef.current.set('minutes',time.minutes)
         cookieRef.current.set('secondsA',time.secondsA)
         cookieRef.current.set('secondsB',time.secondsB)
@@ -53,22 +53,15 @@ const Timer = () => {
         clearInterval(id)
    }
    const resetTimer = () =>{
-    
-        // time.minutes = 5
-        // time.secondsA=0
-        // time.secondsB = 0
-        //  console.log('in reset',time)
-        // setTime({minutes:5,secondsA:0,secondsB:0})
         clear(gInterval.current)
-        startInterval()
-           
-    }
-    const startInterval = () =>{
         time.minutes = 5
         time.secondsA=0
         time.secondsB = 0
+        // setTime({...time})
+        startInterval()
+    }
+    const startInterval = () =>{
         const id = setInterval(()=>{
-        // setTime({minutes:5,secondsA:0,secondsB:0})
             const newTime = displayNewTime()
             if(newTime.minutes == 0 && newTime.secondsA == 0 && newTime.secondsB == 0 )
                 clear(id)

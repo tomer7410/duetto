@@ -12,13 +12,11 @@ const Animation :React.FC<AnimationProps>= ({url}) => {
             rotate = direction == 0 ? rotate + 1 : rotate -1
             if(rotate == 45){
                 direction = 1
-                setRotate(rotate)
                 setDirection(direction)
                 return
             }
             if(rotate == 0){
                 direction = 0
-                setRotate(rotate)
                 setDirection(direction)
                 return
             }
