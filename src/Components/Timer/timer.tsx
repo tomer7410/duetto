@@ -13,7 +13,6 @@ const Timer = () => {
         secondsA:0,
         secondsB:0
     })
-    const [isReset, setIsReset] = useState(false)
     const gInterval: { current: NodeJS.Timeout | null } = useRef(null);
     const cookieRef = useRef(new Cookies())
     const displayNewTime = ()=>{
